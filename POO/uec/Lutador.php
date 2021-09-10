@@ -17,36 +17,49 @@ class Lutador {
     // Métodos da Classe
 
     public function apresentar()    {
+        echo "<p>-------------------------</p>";
+        echo "<p>CHEGOU A HORA! O Lutador " . $this->getNome();
+        echo ", veio diretamente de " . $this->getNacionalidade();
+        echo ", tem " . $this->getIdade() . " anos e pesa " . $this->getPeso() . "kgs.";
+        echo "<br> Ele tem " . $this->getVitorias() . " vitórias, ";
+        echo $this->getDerrotas() . " derrotas e " . $this->getEmpates() . " empates</p>";
 
     }
 
     public function status()   {
+        echo "<p>-------------------------</p>";
+        echo "<p>" . $this->getNome() . " é um peso " . $this->getCategoria();
+        echo " e já ganhou " . $this->getVitorias() . " vezes,";
+        echo " perdeu " . $this->getDerrotas() . " vezes,";
+        echo " empatou " . $this->getEmpates() . " vezes.";
 
     }
 
     public function ganharLuta ()  {
-
+        $this->setVitorias($this->getVitorias() + 1);
     }
 
     public function perderLuta ()  {
+        $this->setDerrotas($this->getDerrotas() + 1);
 
     }
 
     public function empatarLuta () {
+        $this->setEmpates($this->getEmpates() + 1);
 
     }
 
     // Método Mágico Construtor
 
-    public function __construct()    {
-        $this->setNome();
-        $this->setNacionalidade();
-        $this->setIdade();
-        $this->setAltura();
-        $this->setPeso();
-        $this->setVitorias();
-        $this->setDerrotas();
-        $this->setEmpates();
+    public function __construct($no, $na, $id, $al, $pe, $vi, $de, $em)    {
+        $this-> nome = $no;
+        $this-> nacionalidade = $na;
+        $this-> idade = $id;
+        $this-> altura = $al;
+        $this-> setPeso($pe);
+        $this-> vitorias = $vi;
+        $this-> derrotas = $de;
+        $this-> empates = $em;
     }
 
 
@@ -113,9 +126,18 @@ class Lutador {
         return $this->categoria;
     }
 
-    private function setCategoria($ca)
-    {
-        $this->categoria = $ca;
+    private function setCategoria()    {
+        if ($this->peso < 52.2) {
+            $this->categoria = "Inválido";
+        } elseif ($this->peso <= 70.3) {
+            $this->categoria = "Leve";
+        } elseif ($this->peso <= 83.9) {
+            $this->categoria = "Médio";
+        } elseif ($this->peso <= 120.2) {
+            $this->categoria = "Pesado";
+        } else  {
+            $this->categoria = "Inválido";
+        }
     }
 
     public function getVitorias()
