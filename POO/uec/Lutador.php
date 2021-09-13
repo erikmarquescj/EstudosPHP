@@ -20,7 +20,7 @@ class Lutador {
         echo "<p>-------------------------</p>";
         echo "<p>CHEGOU A HORA! O Lutador " . $this->getNome();
         echo ", veio diretamente de " . $this->getNacionalidade();
-        echo ", tem " . $this->getIdade() . " anos e pesa " . $this->getPeso() . "kgs.";
+        echo ", tem " . $this->getIdade() . " anos e pesa " . $this->getPeso() . " kgs.";
         echo "<br> Ele tem " . $this->getVitorias() . " vitórias, ";
         echo $this->getDerrotas() . " derrotas e " . $this->getEmpates() . " empates</p>";
 
